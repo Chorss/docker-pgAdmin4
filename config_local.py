@@ -41,7 +41,6 @@ LOG_FILE = '/dev/stdout'
 # requiring user authentication, or desktop mode which uses an automatic
 # default login.
 #
-# DO NOT DISABLE SERVER MODE IF RUNNING ON A WEBSERVER!!
 SERVER_MODE = os.environ['SERVER_MODE'].lower() in ("yes", "true", "1")
 
 # This configuration otion allows the user to host the application on a LAN
