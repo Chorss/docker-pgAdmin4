@@ -1,5 +1,7 @@
 FROM python:2.7-alpine
 
+MAINTAINER Kacper Czarczyński <kacper.czarczynski@gmail.com>
+
 ENV PGADMIN_VERSION=1.3
 
 RUN apk add --no-cache alpine-sdk postgresql postgresql-dev \
