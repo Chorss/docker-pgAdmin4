@@ -2,7 +2,14 @@ FROM python:2.7-alpine
 
 MAINTAINER Kacper Czarczyński <kacper.czarczynski@gmail.com>
 
-ENV PGADMIN_VERSION=1.4
+# Metadata
+      org.label-schema.url="https://www.pgadmin.org" \
+      org.label-schema.license="PostgreSQL" \
+      org.label-schema.name="pgAdmin" \
+      org.label-schema.version="4" \
+      org.label-schema.schema-version="1.0"
+
+ENV PGADMIN_VERSION=1.5
 
 RUN apk add --no-cache alpine-sdk postgresql postgresql-dev \
  && echo " https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v${PGADMIN_VERSION}/pip/pgadmin4-${PGADMIN_VERSION}-py2.py3-none-any.whl" > link.txt \
