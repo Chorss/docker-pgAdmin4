@@ -3,7 +3,7 @@ FROM python:2.7-alpine
 MAINTAINER Kacper Czarczyński <kacper.czarczynski@gmail.com>
 
 # Metadata
-      org.label-schema.url="https://www.pgadmin.org" \
+LABEL org.label-schema.url="https://www.pgadmin.org" \
       org.label-schema.license="PostgreSQL" \
       org.label-schema.name="pgAdmin" \
       org.label-schema.version="4" \
