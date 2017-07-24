@@ -9,7 +9,7 @@ LABEL org.label-schema.url="https://www.pgadmin.org" \
       org.label-schema.version="4" \
       org.label-schema.schema-version="1.0"
 
-ENV PGADMIN_VERSION=1.5
+ENV PGADMIN_VERSION=1.6
 
 RUN apk add --no-cache alpine-sdk postgresql postgresql-dev \
  && echo " https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v${PGADMIN_VERSION}/pip/pgadmin4-${PGADMIN_VERSION}-py2.py3-none-any.whl" > link.txt \
