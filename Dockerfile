@@ -5,13 +5,13 @@ MAINTAINER Kacper Czarczyński <kacper.czarczynski@gmail.com>
 # Metadata
 LABEL org.label-schema.url="https://www.pgadmin.org" \
       org.label-schema.license="PostgreSQL" \
-      org.label-schema.name="pgAdmin" \
-      org.label-schema.version="4" \
+      org.label-schema.name="pgAdmin4" \
+      org.label-schema.version="${PGADMIN_VERSION}" \
       org.label-schema.schema-version="1.0"
 
 ENV PGADMIN_VERSION=1.6
 
-RUN apk add --no-cache alpine-sdk postgresql postgresql-dev \
+RUN apk add --no-cache alpine-sdk postgresql postgresql-dev openssl \
  && echo " https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v${PGADMIN_VERSION}/pip/pgadmin4-${PGADMIN_VERSION}-py2.py3-none-any.whl" > link.txt \
  && pip install --upgrade pip \
  && pip install --no-cache-dir -r link.txt \
@@ -19,6 +19,7 @@ RUN apk add --no-cache alpine-sdk postgresql postgresql-dev \
  && adduser -D -S -h /pgadmin -s /sbin/nologin -u 1000 -G pgadmin pgadmin \
  && mkdir -p /data/config /data/storage /data/sessions; chown -R 1000:50 /data \
  && apk del alpine-sdk \
+ && rm link.txt \
  && rm -rf /root/.cache
 
 ENV SERVER_MODE   false
