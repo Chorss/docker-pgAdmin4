@@ -35,5 +35,5 @@ COPY LICENSE config_local.py /usr/local/lib/python2.7/site-packages/pgadmin4/
 USER pgadmin:pgadmin
 VOLUME /data/
 
-CMD [ "python", "./usr/local/lib/python2.7/site-packages/pgadmin4/pgAdmin4.py" ]
+ENTRYPOINT [ "python", "./usr/local/lib/python2.7/site-packages/pgadmin4/pgAdmin4.py" ]
 EXPOSE $SERVER_PORT

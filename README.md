@@ -16,10 +16,21 @@
 
 Example docker command
 
+Quick start
+
+`$ docker run -d -p 5050:5050 chorss/docker-pgadmin4`
+
 `$ docker run -d -p 5050:5050 -v /home/user/data:/data chorss/docker-pgadmin4`
 
-**Data Storage Outside of the Container**
--
 
-`-v /my/local/directory:/data` to the docker run command.
-This will store session, configuration and storage.
+**Backup and Restore in pgAdmin4 (pg_dump, pg_restore)**
+
+To use restore and backup you need to set the path
+
+`File -> Preferences -> Binary` the paths set to `/usr/bin`
+
+**Data Storage Outside of the Container**
+
+ This will store session, configuration and storage.
+ 
+`docker run -d -p 5050:5050 -v /home/user/data:/data chorss/docker-pgadmin4`
