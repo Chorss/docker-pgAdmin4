@@ -1,22 +1,24 @@
 **pgAdmin4 in docker container - Version 2.0**
 -
 
-|          NAME          |      VARIABLE     | REQUIRED                       |
-|------------------------|-------------------|--------------------------------|
-| DEFAULT_SERVER_PORT    | 5050              | NO                             |
-| SERVER_MODE            | True or False     | YES                            |
-| PGADMIN_SETUP_EMAIL    | username@mail.tld | NO (IF SERVER_MODE SET FALSE)  |
-| PGADMIN_SETUP_PASSWORD | password          | NO (IF SERVER_MODE SET FALSE)  |
-| MAIL_SERVER            | mail.example.tld  | NO (IF SERVER_MODE SET FALSE)  |
-| MAIL_PORT              | 465               | NO (IF SERVER_MODE SET FALSE)  |
-| MAIL_USE_SSL           | True              | NO (IF SERVER_MODE SET FALSE)  |
-| MAIL_USERNAME          | username          | NO (IF SERVER_MODE SET FALSE)  |
-| MAIL_PASSWORD          | password          | NO (IF SERVER_MODE SET FALSE)  |
+|          NAME          | Data Type  | REQUIRED                       |
+|------------------------|------------|--------------------------------|
+| DEFAULT_SERVER_PORT    | Integer    | NO                             |
+| SERVER_MODE            | Boolean    | YES                            |
+| PGADMIN_SETUP_EMAIL    | String     | NO (IF SERVER_MODE SET FALSE)  |
+| PGADMIN_SETUP_PASSWORD | String     | NO (IF SERVER_MODE SET FALSE)  |
+| MAIL_SERVER            | String     | NO (IF SERVER_MODE SET FALSE)  |
+| MAIL_PORT              | Integer    | NO (IF SERVER_MODE SET FALSE)  |
+| MAIL_USE_SSL           | Boolean    | NO (IF SERVER_MODE SET FALSE)  |
+| MAIL_USE_TLS           | Boolean    | NO (IF SERVER_MODE SET FALSE)  |
+| MAIL_USERNAME          | String     | NO (IF SERVER_MODE SET FALSE)  |
+| MAIL_PASSWORD          | String     | NO (IF SERVER_MODE SET FALSE)  |
+| MAIL_DEBUG             | Boolean    | NO (IF SERVER_MODE SET FALSE)  |
 
+Example commands
+-
 
-Example docker command
-
-Quick start
+**Quick start**
 
 `$ docker run -d -p 5050:5050 chorss/docker-pgadmin4`
 
@@ -31,6 +33,6 @@ To use restore and backup you need to set the path
 
 **Data Storage Outside of the Container**
 
- This will store session, configuration and storage.
+Data is stored in a volume, located at /data/.
  
 `docker run -d -p 5050:5050 -v /home/user/data:/data chorss/docker-pgadmin4`
