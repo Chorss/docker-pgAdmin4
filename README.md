@@ -1,4 +1,4 @@
-**pgAdmin4 in docker container - Version 2.0-rc2**
+**pgAdmin4 in docker container - Version 2.0**
 -
 
 |          NAME          |      VARIABLE     | REQUIRED                       |
