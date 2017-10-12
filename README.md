@@ -14,6 +14,9 @@
 | MAIL_USERNAME          | String     | NO (IF SERVER_MODE SET FALSE)  |
 | MAIL_PASSWORD          | String     | NO (IF SERVER_MODE SET FALSE)  |
 | MAIL_DEBUG             | Boolean    | NO (IF SERVER_MODE SET FALSE)  |
+| UID                    | 1000              | NO                             |
+| GID                    | 50                | NO                             |
+
 
 Example commands
 -
@@ -33,6 +36,9 @@ To use restore and backup you need to set the path
 
 **Data Storage Outside of the Container**
 
-Data is stored in a volume, located at /data/.
+ This will store session, configuration and storage on the given volume.
+ The application user within the container will change it's uid/gid to the
+ given values and will use this uid/gid to write to the volume-directory.
+
  
-`docker run -d -p 5050:5050 -v /home/user/data:/data chorss/docker-pgadmin4`
+`docker run -d -p 5050:5050 -e UID=2301 -e GID=2301 -v /home/user/data:/data chorss/docker-pgadmin4`
