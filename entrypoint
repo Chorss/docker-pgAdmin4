@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "GID=$GID"
-echo "UDI=$UID"
+echo "UID=$UID"
 
 groupmod -g $GID pgadmin
 usermod -u $UID pgadmin
