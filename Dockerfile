@@ -10,8 +10,8 @@ LABEL org.label-schema.url="https://www.pgadmin.org" \
       org.label-schema.schema-version="1.0"
 
 ENV PGADMIN_VERSION 2.0
-ENV UID=1000
-ENV GID=50
+ENV UID             1000
+ENV GID             50
 
 RUN apk add --no-cache alpine-sdk postgresql postgresql-dev openssl shadow sudo su-exec bash \
  && echo " https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v${PGADMIN_VERSION}/pip/pgadmin4-${PGADMIN_VERSION}-py2.py3-none-any.whl" > link.txt \
@@ -29,18 +29,18 @@ ENV SERVER_MODE   false
 ENV SERVER_PORT   5050
 ENV MAIL_SERVER   mail.example.tld
 ENV MAIL_PORT     465
-ENV MAIL_USE_SSL  true
+ENV MAIL_USE_SSL  false
 ENV MAIL_USE_TLS  false
 ENV MAIL_USERNAME username
 ENV MAIL_PASSWORD password
-ENV MAIL_DEBUG    true
+ENV MAIL_DEBUG    false
 
 COPY LICENSE config_local.py /usr/local/lib/python3.6/site-packages/pgadmin4/
 COPY entrypoint disable_logfile_when_stdout.patch /
 RUN chmod 0775 /entrypoint
 RUN patch -p0 < /disable_logfile_when_stdout.patch
 
-VOLUME /data/
+VOLUME /data
 EXPOSE ${SERVER_PORT}
 ENTRYPOINT ["/entrypoint"]
 

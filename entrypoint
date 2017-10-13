@@ -9,6 +9,4 @@ usermod -u $UID pgadmin
 chown -R pgadmin:pgadmin /data/{config,sessions,storage,misc}
 chmod o+w /dev/stdout   # https://github.com/moby/moby/issues/31243#issuecomment-315059185
 
-
 exec "$@"
-

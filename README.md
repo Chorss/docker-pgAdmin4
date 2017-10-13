@@ -5,18 +5,19 @@
 |------------------------|------------|--------------------------------|
 | DEFAULT_SERVER_PORT    | Integer    | NO                             |
 | SERVER_MODE            | Boolean    | YES                            |
-| PGADMIN_SETUP_EMAIL    | String     | NO (IF SERVER_MODE SET FALSE)  |
-| PGADMIN_SETUP_PASSWORD | String     | NO (IF SERVER_MODE SET FALSE)  |
-| MAIL_SERVER            | String     | NO (IF SERVER_MODE SET FALSE)  |
-| MAIL_PORT              | Integer    | NO (IF SERVER_MODE SET FALSE)  |
-| MAIL_USE_SSL           | Boolean    | NO (IF SERVER_MODE SET FALSE)  |
-| MAIL_USE_TLS           | Boolean    | NO (IF SERVER_MODE SET FALSE)  |
-| MAIL_USERNAME          | String     | NO (IF SERVER_MODE SET FALSE)  |
-| MAIL_PASSWORD          | String     | NO (IF SERVER_MODE SET FALSE)  |
-| MAIL_DEBUG             | Boolean    | NO (IF SERVER_MODE SET FALSE)  |
-| UID                    | 1000              | NO                             |
-| GID                    | 50                | NO                             |
+| PGADMIN_SETUP_EMAIL    | String     | NO*                            |
+| PGADMIN_SETUP_PASSWORD | String     | NO*                            |
+| MAIL_SERVER            | String     | NO*                            |
+| MAIL_PORT              | Integer    | NO*                            |
+| MAIL_USE_SSL           | Boolean    | NO*                            |
+| MAIL_USE_TLS           | Boolean    | NO*                            |
+| MAIL_USERNAME          | String     | NO*                            |
+| MAIL_PASSWORD          | String     | NO*                            |
+| MAIL_DEBUG             | Boolean    | NO                             |
+| UID                    | Integer    | NO                             |
+| GID                    | Integer    | NO                             |
 
+`*` -> if SERVER_MODE set false
 
 Example commands
 -
