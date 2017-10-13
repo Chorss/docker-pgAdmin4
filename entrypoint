@@ -1,0 +1,14 @@
+#!/bin/bash
+
+echo "GID=$GID"
+echo "UDI=$UID"
+
+groupmod -g $GID pgadmin
+usermod -u $UID pgadmin
+[[ -d /data/misc ]] || mkdir /data/misc
+chown -R pgadmin:pgadmin /data/{config,sessions,storage,misc}
+chmod o+w /dev/stdout   # https://github.com/moby/moby/issues/31243#issuecomment-315059185
+
+
+exec "$@"
+
