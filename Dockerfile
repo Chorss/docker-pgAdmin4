@@ -2,16 +2,17 @@ FROM python:3.6-alpine3.6
 
 MAINTAINER Kacper Czarczyński <kacper.czarczynski@gmail.com>
 
-# Metadata
-LABEL org.label-schema.url="https://www.pgadmin.org" \
-      org.label-schema.license="PostgreSQL" \
-      org.label-schema.name="pgAdmin4" \
-      org.label-schema.version="${PGADMIN_VERSION}" \
-      org.label-schema.schema-version="1.0"
-
-ENV PGADMIN_VERSION 2.0
+ENV PGADMIN_VERSION 2.1
 ENV UID             1000
 ENV GID             50
+
+# Metadata
+LABEL   org.label-schema.name="pgAdmin4" \
+        org.label-schema.description="Docker image pgAdmin4" \
+        org.label-schema.url="https://www.pgadmin.org" \
+        org.label-schema.license="PostgreSQL" \
+        org.label-schema.version="${PGADMIN_VERSION}" \
+        org.label-schema.vcs-url="https://github.com/Chorss/docker-pgAdmin4"
 
 RUN apk add --no-cache alpine-sdk postgresql postgresql-dev openssl shadow sudo su-exec bash \
  && echo " https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v${PGADMIN_VERSION}/pip/pgadmin4-${PGADMIN_VERSION}-py2.py3-none-any.whl" > link.txt \
