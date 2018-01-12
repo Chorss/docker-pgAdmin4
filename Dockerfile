@@ -11,7 +11,8 @@ LABEL   org.label-schema.name="pgAdmin4" \
         org.label-schema.description="Docker image pgAdmin4" \
         org.label-schema.url="https://www.pgadmin.org" \
         org.label-schema.license="PostgreSQL" \
-        org.label-schema.version="${PGADMIN_VERSION}" \
+        org.label-schema.version=${PGADMIN_VERSION} \
+        org.label-schema.vcs-ref=$VCS_REF \
         org.label-schema.vcs-url="https://github.com/Chorss/docker-pgAdmin4"
 
 RUN apk add --no-cache alpine-sdk postgresql postgresql-dev openssl shadow sudo su-exec bash \
