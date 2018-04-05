@@ -43,5 +43,11 @@ To use restore and backup you need to set the path
  The application user within the container will change it's uid/gid to the
  given values and will use this uid/gid to write to the volume-directory.
 
- 
+
 `docker run -d -p 5050:5050 -e UID=2301 -e GID=2301 -v /home/user/data:/data chorss/docker-pgadmin4`
+
+ On most shells, you can run with the UID/GID of the current user like this:
+
+    docker run -d -p 5050:5050 -e UID=`id -u` -e GID=`id -g` -v $HOME/data:/data chorss/docker-pgadmin4
+
+ Remember to create `$HOME/data` before running the command above.
