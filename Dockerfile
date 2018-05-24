@@ -1,8 +1,8 @@
-FROM python:3-alpine3.6
+FROM python:3-alpine3.7
 
 MAINTAINER Kacper Czarczyński <kacper.czarczynski@gmail.com>
 
-ENV PGADMIN_VERSION 2.1
+ENV PGADMIN_VERSION 3.0
 ENV UID             1000
 ENV GID             50
 
