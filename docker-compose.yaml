@@ -1,0 +1,9 @@
+version: '2.1'
+services:
+  pgadmin:
+    build: 
+      context: .
+    image: chorss/docker-pgadmin4
+    container_name: pgadmin
+    environment:
+      SERVER_PORT: 5050
