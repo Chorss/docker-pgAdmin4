@@ -1,9 +1,23 @@
-version: '2.1'
+version: '3'
+
 services:
-  pgadmin:
-    build: 
-      context: .
-    image: chorss/docker-pgadmin4
-    container_name: pgadmin
+  postgres:
+    container_name: postgres
+    restart: always #Autostart
+    image: postgres:9.6
+    ports:
+      - 5432:5432
     environment:
-      SERVER_PORT: 5050
+      - DEBUG=false
+      - POSTGRES_PASSWORD=postgres
+
+  pgadmin4:
+    container_name: pgadmin4
+    restart: always #Autostart
+    image: chorss/docker-pgadmin4:3.0
+    volumes:
+      - /CHANGE_DIRECTORY:/data
+    links:
+      - postgres
+    ports:
+      - 5050:5050
