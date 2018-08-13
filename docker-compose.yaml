@@ -14,7 +14,7 @@ services:
   pgadmin4:
     container_name: pgadmin4
     restart: always #Autostart
-    image: chorss/docker-pgadmin4:3.0
+    image: chorss/docker-pgadmin4
     volumes:
       - /CHANGE_DIRECTORY:/data
     links:
