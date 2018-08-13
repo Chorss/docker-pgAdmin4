@@ -1,4 +1,4 @@
-**pgAdmin4 in docker container - Version 3.1**
+**pgAdmin4 in docker container - Version 3.2**
 -
 
 [![](https://images.microbadger.com/badges/image/chorss/docker-pgadmin4.svg)](https://microbadger.com/images/chorss/docker-pgadmin4) [![](https://images.microbadger.com/badges/version/chorss/docker-pgadmin4.svg)](https://microbadger.com/images/chorss/docker-pgadmin4)
