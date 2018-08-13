@@ -1,11 +1,10 @@
 **pgAdmin4 in docker container - Version 3.0**
 -
 
-[![](https://images.microbadger.com/badges/image/chorss/docker-pgadmin4.svg)](https://microbadger.com/images/chorss/docker-pgadmin4) [![](https://images.microbadger.com/badges/version/chorss/docker-pgadmin4.svg)](https://microbadger.com/images/chorss/docker-pgadmin4)[![](https://images.microbadger.com/badges/license/chorss/docker-pgadmin4.svg)](https://microbadger.com/images/chorss/docker-pgadmin4)
+[![](https://images.microbadger.com/badges/image/chorss/docker-pgadmin4.svg)](https://microbadger.com/images/chorss/docker-pgadmin4) [![](https://images.microbadger.com/badges/version/chorss/docker-pgadmin4.svg)](https://microbadger.com/images/chorss/docker-pgadmin4)
 
 |          NAME          | Data Type  | REQUIRED                       |
 |------------------------|------------|--------------------------------|
-| SERVER_PORT            | Integer    | NO                             |
 | SERVER_MODE            | Boolean    | YES                            |
 | PGADMIN_SETUP_EMAIL    | String     | NO*                            |
 | PGADMIN_SETUP_PASSWORD | String     | NO*                            |
@@ -28,26 +27,26 @@ Example commands
 
 `$ docker run -d -p 5050:5050 chorss/docker-pgadmin4`
 
-`$ docker run -d -p 5050:5050 -v /home/user/data:/data chorss/docker-pgadmin4`
+`$ docker run -d -p 5050:5050 -v $HOME/mydata:/data chorss/docker-pgadmin4`
 
 
-**Backup and Restore in pgAdmin4 (pg_dump, pg_restore)**
+**Backup and restore in pgAdmin4 (pg_dump, pg_restore)**
 
-To use restore and backup you need to set the path
+To use restore and backup you need to set the path in application
 
 `File -> Preferences -> Binary` the paths set to `/usr/bin`
 
-**Data Storage Outside of the Container**
+**Data storage outside of the container**
 
  This will store session, configuration and storage on the given volume.
  The application user within the container will change it's uid/gid to the
  given values and will use this uid/gid to write to the volume-directory.
 
 
-`docker run -d -p 5050:5050 -e UID=2301 -e GID=2301 -v /home/user/data:/data chorss/docker-pgadmin4`
+`docker run -d -p 5050:5050 -e UID=2301 -e GID=2301 -v $HOME/mydata:/data chorss/docker-pgadmin4`
 
- On most shells, you can run with the UID/GID of the current user like this:
+On most shells, you can run with the UID/GID of the current user like this
 
-    docker run -d -p 5050:5050 -e UID=`id -u` -e GID=`id -g` -v $HOME/data:/data chorss/docker-pgadmin4
+    docker run -d -p 5050:5050 -e UID=`id -u` -e GID=`id -g` -v $HOME/mydata:/data chorss/docker-pgadmin4
 
- Remember to create `$HOME/data` before running the command above.
+ **Remember to create `$HOME/mydata` before running the command above.**
