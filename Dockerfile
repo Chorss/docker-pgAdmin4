@@ -1,6 +1,6 @@
 FROM python:3-alpine3.6
 
-MAINTAINER Kacper Czarczyński <kacper.czarczynski@gmail.com>
+LABEL maintainer="Kacper Czarczyński <kacper.czarczynski@gmail.com>"
 
 ENV PGADMIN_VERSION 3.3
 ENV UID             1000
