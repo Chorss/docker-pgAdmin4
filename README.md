@@ -5,6 +5,7 @@
 
 |          NAME          | Data Type  | REQUIRED                       |
 |------------------------|------------|--------------------------------|
+| SERVER_PORT            | Integer    | NO                             |
 | SERVER_MODE            | Boolean    | YES                            |
 | PGADMIN_SETUP_EMAIL    | String     | NO*                            |
 | PGADMIN_SETUP_PASSWORD | String     | NO*                            |

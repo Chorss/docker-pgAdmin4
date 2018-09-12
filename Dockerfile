@@ -7,6 +7,7 @@ ENV UID             1000
 ENV GID             50
 
 ENV SERVER_MODE   false
+ENV SERVER_PORT   5050
 ENV MAIL_SERVER   mail.example.tld
 ENV MAIL_PORT     465
 ENV MAIL_USE_SSL  false
@@ -40,6 +41,7 @@ COPY entrypoint /
 RUN chmod 0775 /entrypoint
 
 VOLUME /data
+EXPOSE ${SERVER_PORT}
 ENTRYPOINT ["/entrypoint"]
 
 CMD ["su-exec", "pgadmin", "python", "/usr/local/lib/python3.6/site-packages/pgadmin4/pgAdmin4.py"]
