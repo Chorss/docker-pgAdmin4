@@ -1,7 +1,7 @@
-**pgAdmin4 in docker container - Version 3.3**
+**pgAdmin4 in docker container - Version 3.4**
 -
 
-[![](https://images.microbadger.com/badges/image/chorss/docker-pgadmin4.svg)](https://microbadger.com/images/chorss/docker-pgadmin4) [![](https://images.microbadger.com/badges/version/chorss/docker-pgadmin4.svg)](https://microbadger.com/images/chorss/docker-pgadmin4)
+[![](https://images.microbadger.com/badges/image/chorss/docker-pgadmin4.svg)](https://microbadger.com/images/chorss/docker-pgadmin4) [![](https://img.shields.io/docker/pulls/chorss/docker-pgadmin4.svg)](https://microbadger.com/images/chorss/docker-pgadmin4) [![](https://images.microbadger.com/badges/version/chorss/docker-pgadmin4.svg)](https://microbadger.com/images/chorss/docker-pgadmin4)
 
 |          NAME          | Data Type  | REQUIRED                       |
 |------------------------|------------|--------------------------------|

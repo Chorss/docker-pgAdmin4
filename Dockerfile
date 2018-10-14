@@ -1,8 +1,8 @@
-FROM python:3-alpine3.6
+FROM python:alpine3.8
 
 LABEL maintainer="Kacper Czarczyński <kacper.czarczynski@gmail.com>"
 
-ENV PGADMIN_VERSION 3.3
+ENV PGADMIN_VERSION 3.4
 ENV UID             1000
 ENV GID             50
 
@@ -36,7 +36,7 @@ RUN addgroup -g ${GID} -S pgadmin \
  && chown -R ${UID}:${GID} /data \
  && rm -rf /root/.cache
 
-COPY config_local.py /usr/local/lib/python3.6/site-packages/pgadmin4/
+COPY config_local.py /usr/local/lib/python3.7/site-packages/pgadmin4/
 COPY entrypoint /
 RUN chmod 0775 /entrypoint
 
@@ -44,4 +44,4 @@ VOLUME /data
 EXPOSE ${SERVER_PORT}
 ENTRYPOINT ["/entrypoint"]
 
-CMD ["su-exec", "pgadmin", "python", "/usr/local/lib/python3.6/site-packages/pgadmin4/pgAdmin4.py"]
+CMD ["su-exec", "pgadmin", "python", "/usr/local/lib/python3.7/site-packages/pgadmin4/pgAdmin4.py"]
