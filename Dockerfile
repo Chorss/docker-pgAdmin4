@@ -14,7 +14,8 @@ ENV MAIL_USE_SSL  false
 ENV MAIL_USE_TLS  false
 ENV MAIL_USERNAME username
 ENV MAIL_PASSWORD password
-ENV MAIL_DEBUG    false
+
+ENV PGADMIN_ENABLE_TLS false
 
 # Metadata
 LABEL   org.label-schema.name="pgAdmin4" \
