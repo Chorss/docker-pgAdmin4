@@ -2,10 +2,11 @@
 #
 # pgAdmin 4 - PostgreSQL Tools
 #
-# Copyright (C) 2013 - 2017, The pgAdmin Development Team
+# Copyright (C) 2013 - 2018, The pgAdmin Development Team
 # This software is released under the PostgreSQL Licence
 #
-# config.py - Core application configuration settings
+# config_local.py = config.py - Core application configuration settings
+# https://github.com/postgres/pgadmin4/blob/master/web/config.py
 #
 ##########################################################################
 
@@ -18,15 +19,6 @@ if sys.version_info[0] >= 3:
 else:
     import __builtin__ as builtins
 
-
-##########################################################################
-# Application settings
-##########################################################################
-
-# Name of the application to display in the UI
-APP_NAME = 'pgAdmin 4'
-APP_ICON = 'pg-icon'
-
 ##########################################################################
 # Misc stuff
 ##########################################################################
@@ -38,8 +30,13 @@ HELP_PATH = '../../../docs/en_US/_build/html/'
 LANGUAGES = {
     'en': 'English',
     'zh': 'Chinese (Simplified)',
+    'fr': 'French',
     'de': 'German',
-    'pl': 'Polish'
+    'ja': 'Japanese',
+    'ko': 'Korean',
+    'pl': 'Polish',
+    'ru': 'Russian',
+    'es': 'Spanish',
 }
 
 ##########################################################################
@@ -70,7 +67,6 @@ SERVER_MODE = os.environ['SERVER_MODE'].lower() in ("yes", "true", "1")
 # NOTE: This is NOT recommended for production use, only for debugging
 # or testing. Production installations should be run as a WSGI application
 # behind Apache HTTPD.
-# DEFAULT_SERVER = '127.0.0.1'
 DEFAULT_SERVER = '0.0.0.0'
 
 # Enable CSRF protection?
@@ -106,13 +102,16 @@ DEBUG = False
 #   INFO     20
 #   DEBUG    10
 #   NOTSET    0
-CONSOLE_LOG_LEVEL = logging.ERROR
+CONSOLE_LOG_LEVEL = logging.WARNING
 FILE_LOG_LEVEL = logging.WARNING
 
-
 # Log format.
-# CONSOLE_LOG_FORMAT = '%(asctime)s: %(levelname)s\t%(name)s:\t%(message)s'
-# FILE_LOG_FORMAT = '%(asctime)s: %(levelname)s\t%(name)s:\t%(message)s'
+CONSOLE_LOG_FORMAT = '%(asctime)s: %(levelname)s\t%(name)s:\t%(message)s'
+FILE_LOG_FORMAT = '%(asctime)s: %(levelname)s\t%(name)s:\t%(message)s'
+
+# Log file name. This goes in the data directory, except on non-Windows
+# platforms in server mode.
+LOG_FILE = os.path.join(DATA_DIR, 'logs/pgadmin4.log')
 
 ##########################################################################
 # Server Connection Driver Settings
@@ -128,6 +127,11 @@ MAX_SESSION_IDLE_TIME = 60
 ##########################################################################
 # User account and settings storage
 ##########################################################################
+
+# The default path to the SQLite database used to store user accounts and
+# settings. This default places the file in the same directory as this
+# config file, but generates an absolute path for use througout the app.
+SQLITE_PATH = os.path.join(DATA_DIR, 'config/pgadmin4.db')
 
 # SQLITE_TIMEOUT will define how long to wait before throwing the error -
 # OperationError due to database lock. On slower system, you may need to change
@@ -159,6 +163,7 @@ ALLOW_SAVE_PASSWORD = True
 # SESSION_DB_PATH = '/run/shm/pgAdmin4_session'
 #
 ##########################################################################
+SESSION_DB_PATH = os.path.join(DATA_DIR, 'sessions')
 
 SESSION_COOKIE_NAME = 'pga4_session'
 
@@ -175,19 +180,6 @@ MAIL_USE_SSL = os.environ['MAIL_USE_SSL'].lower() in ("yes", "true", "1")
 MAIL_USE_TLS = os.environ['MAIL_USE_TLS'].lower() in ("yes", "true", "1")
 MAIL_USERNAME = os.environ['MAIL_USERNAME']
 MAIL_PASSWORD = os.environ['MAIL_PASSWORD']
-MAIL_DEBUG = os.environ['MAIL_DEBUG'].lower() in ("yes", "true", "1")
-
-##########################################################################
-# Mail content settings
-##########################################################################
-
-# These settings define the content of password reset emails
-SECURITY_EMAIL_SUBJECT_PASSWORD_RESET = "Password reset instructions for %s" \
-                                        % APP_NAME
-SECURITY_EMAIL_SUBJECT_PASSWORD_NOTICE = "Your %s password has been reset" \
-                                         % APP_NAME
-SECURITY_EMAIL_SUBJECT_PASSWORD_CHANGE_NOTICE = \
-    "Your password for %s has been changed" % APP_NAME
 
 ##########################################################################
 # Upgrade checks
@@ -200,11 +192,67 @@ UPGRADE_CHECK_ENABLED = False
 UPGRADE_CHECK_URL = 'https://www.pgadmin.org/versions.json'
 
 ##########################################################################
-# Allows flask application to response to the each request asynchronously
-##########################################################################
-THREADED_MODE = True
+# Storage Manager storage url config settings
+# If user sets STORAGE_DIR to empty it will show all volumes if platform
+# is Windows, '/' if it is Linux, Mac or any other unix type system.
 
-SESSION_DB_PATH = os.path.join(DATA_DIR, 'sessions')
+# For example:
+# 1. STORAGE_DIR = get_drive("C") or get_drive() # return C:/ by default
+# where C can be any drive character such as "D", "E", "G" etc
+# 2. Set path manually like
+# STORAGE_DIR = "/path/to/directory/"
+##########################################################################
 STORAGE_DIR = os.path.join(DATA_DIR, 'storage')
-LOG_FILE = os.path.join(DATA_DIR, 'logs/pgadmin4.log')
-SQLITE_PATH = os.path.join(DATA_DIR, 'config/pgadmin4.db')
+
+#####
+# ####################################################################
+# Default locations for binary utilities (pg_dump, pg_restore etc)
+#
+# These are intentionally left empty in the main config file, but are
+# expected to be overridden by packagers in config_distro.py.
+#
+# A default location can be specified for each database driver ID, in
+# a dictionary. Either an absolute or relative path can be specified.
+# In cases where it may be difficult to know what the working directory
+# is, "$DIR" can be specified. This will be replaced with the path to the
+# top-level pgAdmin4.py file. For example, on macOS we might use:
+#
+# $DIR/../../SharedSupport
+#
+##########################################################################
+DEFAULT_BINARY_PATHS = {
+    "pg": "",
+    "ppas": "",
+    "gpdb": ""
+}
+
+##########################################################################
+# Allow users to display Gravatar image for their username in Server mode
+##########################################################################
+SHOW_GRAVATAR_IMAGE = True
+
+##########################################################################
+# Set cookie path
+##########################################################################
+COOKIE_DEFAULT_PATH = '/'
+COOKIE_DEFAULT_DOMAIN = None
+SESSION_COOKIE_DOMAIN = None
+SESSION_COOKIE_SAMESITE = 'Lax'
+
+#########################################################################
+# Skip storing session in files and cache for specific paths
+#########################################################################
+SESSION_SKIP_PATHS = [
+    '/misc/ping'
+]
+
+##########################################################################
+# Session expiration support
+##########################################################################
+# SESSION_EXPIRATION_TIME is the interval in Days. Session will be
+# expire after the specified number of *days*.
+SESSION_EXPIRATION_TIME = 1
+
+# CHECK_SESSION_FILES_INTERVAL is interval in Hours. Application will check
+# the session files for cleanup after specified number of *hours*.
+CHECK_SESSION_FILES_INTERVAL = 24
