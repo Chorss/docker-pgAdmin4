@@ -15,7 +15,6 @@
 | MAIL_USE_TLS           | Boolean    | NO*                            |
 | MAIL_USERNAME          | String     | NO*                            |
 | MAIL_PASSWORD          | String     | NO*                            |
-| MAIL_DEBUG             | Boolean    | NO                             |
 | UID                    | Integer    | NO                             |
 | GID                    | Integer    | NO                             |
 
