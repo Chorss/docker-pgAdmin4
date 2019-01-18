@@ -29,13 +29,6 @@ Example commands
 
 `$ docker run -d -p 5050:5050 -v $HOME/mydata:/data chorss/docker-pgadmin4`
 
-
-**Backup and restore in pgAdmin4 (pg_dump, pg_restore)**
-
-To use restore and backup you need to set the path in application
-
-`File -> Preferences -> Binary` the paths set to `/usr/bin`
-
 **Data storage outside of the container**
 
  This will store session, configuration and storage on the given volume.
