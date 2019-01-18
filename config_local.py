@@ -24,7 +24,7 @@ else:
 ##########################################################################
 
 # Path to the online help.
-HELP_PATH = '../../../docs/en_US/_build/html/'
+HELP_PATH = '../../docs'
 
 # Languages we support in the UI
 LANGUAGES = {
@@ -220,13 +220,13 @@ STORAGE_DIR = os.path.join(DATA_DIR, 'storage')
 # $DIR/../../SharedSupport
 #
 ##########################################################################
-DEFAULT_BINARY_PATHS = {
-    "pg": "",
-    "ppas": "",
-    "gpdb": ""
-}
 
-##########################################################################
+DEFAULT_BINARY_PATHS = {
+    'pg': '/usr/bin'
+    #     "ppas": "",
+    #     "gpdb": ""
+}
+    ##########################################################################
 # Set cookie path
 ##########################################################################
 COOKIE_DEFAULT_PATH = '/'

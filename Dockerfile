@@ -35,7 +35,6 @@ RUN addgroup -g ${GID} -S pgadmin \
  && adduser -D -S -h /pgadmin -s /sbin/nologin -u ${UID} -G pgadmin pgadmin \
  && mkdir -p /data/config /data/logs /data/storage /data/sessions /data/misc \
  && chown -R ${UID}:${GID} /data \
- && cp /usr/bin/psql /usr/bin/pg_dump /usr/bin/pg_restore /usr/local/bin/ \
  && rm -rf /root/.cache
 
 COPY config_local.py /usr/local/lib/python3.7/site-packages/pgadmin4/
