@@ -2,7 +2,7 @@ FROM python:alpine3.8
 
 LABEL maintainer="Kacper Czarczyński <kacper.czarczynski@gmail.com>"
 
-ENV PGADMIN_VERSION 4.1
+ENV PGADMIN_VERSION 4.2
 ENV UID             1000
 ENV GID             50
 
