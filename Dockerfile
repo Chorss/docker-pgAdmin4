@@ -1,4 +1,4 @@
-FROM python:alpine3.8
+FROM python:alpine3.9
 
 LABEL maintainer="Kacper Czarczyński <kacper.czarczynski@gmail.com>"
 
